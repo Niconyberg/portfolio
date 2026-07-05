@@ -48,6 +48,19 @@ export type Entry = {
 export const entries: Entry[] = [
   {
     year: 2026,
+    date: "June 2026",
+    stream: "marathon",
+    title: "1st Marathon rebrands to MONS",
+    body: "The realization: standard marathon training templates weren't the right fit. Rebranded the app to <strong>MONS</strong>.",
+    media: [
+      {
+        link: "https://monsathletics.com/blog/i-have-been-lazy",
+        label: "Read the story",
+      },
+    ],
+  },
+  {
+    year: 2026,
     date: "May 16, 2026",
     stream: "marathon",
     title: "1st Marathon — Helsinki City Marathon",
