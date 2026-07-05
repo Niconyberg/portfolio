@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { PITCHES } from "@/lib/pitches.server";
 import { entries } from "@/content/entries";
 import { TimelineSection } from "@/components/TimelineSection";
@@ -21,21 +22,29 @@ export default async function Page({
             Työmaapäiväkirja · site diary · 2001 → today
           </div>
           <h1>
-            I can&apos;t stop
+            Nico
             <br />
-            <span className="accent">building.</span>
+            Nyberg
           </h1>
-          <p className="intro">
-            It started with a shovel on a construction site in Finland. Now
-            it&apos;s software — apps, servers, databases, AI agents —
-            shipped mostly <strong>solo, with agentic coding tools</strong>.
-            The whole log, newest first: work, side projects, education, dead
-            ends included.
+          <p className="tagline">
+            I can&apos;t stop <span className="accent">building.</span>
           </p>
-          <div className="hero-clip">
-            [ drop meme clip here — self-shot loop, caption &quot;i can&apos;t
-            stop building&quot; ]
-          </div>
+          <p className="intro">
+            It started with a shovel when I was 11 years old. Now it&apos;s
+            all types of projects: apps, renovations, websites, boat rebuilds
+            — anything where I can let my{" "}
+            <strong>creativity and need to build</strong> run free. This is a
+            timeline of it.
+          </p>
+          <figure className="hero-photo">
+            <Image
+              src="/shovel.jpg"
+              alt="Digging on a construction site, age 11"
+              fill
+              sizes="440px"
+              priority
+            />
+          </figure>
         </header>
 
         {pitch && <PitchBlock pitch={pitch} />}
