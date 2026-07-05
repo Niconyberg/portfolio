@@ -1,7 +1,6 @@
 import { PITCHES } from "@/lib/pitches.server";
 import { entries } from "@/content/entries";
-import { Timeline } from "@/components/Timeline";
-import { Filters } from "@/components/Filters";
+import { TimelineSection } from "@/components/TimelineSection";
 import { Ruler } from "@/components/Ruler";
 import { PitchBlock } from "@/components/PitchBlock";
 
@@ -19,7 +18,7 @@ export default async function Page({
       <div className="wrap">
         <header>
           <div className="kicker">
-            Työmaapäiväkirja · site diary · 2008 → today
+            Työmaapäiväkirja · site diary · 2001 → today
           </div>
           <h1>
             I can&apos;t stop
@@ -27,11 +26,11 @@ export default async function Page({
             <span className="accent">building.</span>
           </h1>
           <p className="intro">
-            It started on construction yards in Finland. Now it&apos;s
-            software — apps, servers, databases, AI agents — shipped mostly{" "}
-            <strong>solo, with agentic coding tools</strong>. The whole log,
-            newest first: work, side ventures, marathon training, dead ends
-            included.
+            It started with a shovel on a construction site in Finland. Now
+            it&apos;s software — apps, servers, databases, AI agents —
+            shipped mostly <strong>solo, with agentic coding tools</strong>.
+            The whole log, newest first: work, side projects, education, dead
+            ends included.
           </p>
           <div className="hero-clip">
             [ drop meme clip here — self-shot loop, caption &quot;i can&apos;t
@@ -40,16 +39,12 @@ export default async function Page({
         </header>
 
         {pitch && <PitchBlock pitch={pitch} />}
-
-        <Filters />
       </div>
 
-      <div className="wrap">
-        <Timeline entries={entries} />
-      </div>
+      <TimelineSection entries={entries} />
 
       <footer>
-        START OF LOG · construction yards, 2008 ·{" "}
+        START OF LOG · shovel in hand, 2001 ·{" "}
         <span style={{ color: "var(--orange)" }}>■</span> prototype — more to
         come
       </footer>

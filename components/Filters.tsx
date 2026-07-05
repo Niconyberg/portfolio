@@ -1,32 +1,22 @@
 "use client";
 
-import { useState } from "react";
 import { STREAMS, type Stream } from "@/content/entries";
 
-export function Filters() {
-  const [pressed, setPressed] = useState<Record<Stream, boolean>>(
-    () =>
-      Object.fromEntries(
-        Object.keys(STREAMS).map((k) => [k, true])
-      ) as Record<Stream, boolean>
-  );
-
-  function toggle(key: Stream) {
-    const nextOn = !pressed[key];
-    setPressed((p) => ({ ...p, [key]: nextOn }));
-    document
-      .querySelectorAll(`.entry[data-stream="${key}"]`)
-      .forEach((el) => el.classList.toggle("dimmed", !nextOn));
-  }
-
+export function Filters({
+  active,
+  onSelect,
+}: {
+  active: Stream | null;
+  onSelect: (key: Stream) => void;
+}) {
   return (
-    <div className="filters" role="group" aria-label="Filter streams">
+    <div className="filters" role="group" aria-label="Filter categories">
       {(Object.keys(STREAMS) as Stream[]).map((key) => (
         <button
           key={key}
-          className="chip"
-          aria-pressed={pressed[key]}
-          onClick={() => toggle(key)}
+          className={`chip${active && active !== key ? " dimmed" : ""}`}
+          aria-pressed={active === key}
+          onClick={() => onSelect(key)}
         >
           <span className="dot" style={{ background: `var(--c-${key})` }} />
           {STREAMS[key]}

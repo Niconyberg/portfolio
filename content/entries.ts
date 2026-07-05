@@ -20,11 +20,10 @@
  */
 
 export const STREAMS = {
-  construction: "Construction",
-  venture: "Ventures",
-  work: "Product work",
-  marathon: "1st Marathon",
-  tools: "Tools & experiments",
+  side: "Side projects",
+  education: "Education",
+  work: "Work history",
+  other: "Other",
 } as const;
 
 export type Stream = keyof typeof STREAMS;
@@ -49,7 +48,7 @@ export const entries: Entry[] = [
   {
     year: 2026,
     date: "May 29, 2026",
-    stream: "marathon",
+    stream: "other",
     title: "1st Marathon rebrands to MONS",
     body: "The realization: standard marathon training templates weren't the right fit. Rebranded the app to <strong>MONS</strong>.",
     media: [
@@ -62,7 +61,7 @@ export const entries: Entry[] = [
   {
     year: 2026,
     date: "May 16, 2026",
-    stream: "marathon",
+    stream: "other",
     title: "1st Marathon — Helsinki City Marathon",
     body: 'Coached by a self-built AI marathon coaching app (iPhone + Apple Watch), developed with <strong>Claude Code</strong>. <strong>Next.js · Supabase · iOS</strong>, built solo, shipped to the App Store. Sedentary to a 4:22 marathon in 8 months — the training method I tested on myself.',
     media: [{ video: "" }, { link: "", label: "App Store" }],
@@ -75,7 +74,7 @@ export const entries: Entry[] = [
   {
     year: 2026,
     date: "February 2026",
-    stream: "venture",
+    stream: "side",
     title: '"Most Expensive Product" — interactive essay',
     body: "A conceptual art project about consumer culture. Proof that not everything I build is meant to scale — some things are built to <strong>say something</strong>.",
     media: [{ img: "", cap: "interactive essay" }],
@@ -83,14 +82,14 @@ export const entries: Entry[] = [
   {
     year: 2025,
     date: "February 2025",
-    stream: "venture",
+    stream: "side",
     title: "Founded Kotichef",
     body: 'A learning platform to help people become the chefs of their own homes — and live healthier, more enjoyable lives through it. Built with <strong>Claude</strong>. <a href="https://www.kotichefhub.com">kotichefhub.com</a>.',
   },
   {
     year: 2025,
     date: "January 2025",
-    stream: "venture",
+    stream: "side",
     title: "Shipped my first AI-developed product — a Chrome extension",
     body: 'Right-click a link on a news site, send the article to an AI, and get a summary in a modal — no need to open the page. Built with ChatGPT, the OpenAI API, and a Render.com backend; Google OAuth login, Stripe payments. Started building December 2024, published January 5, 2025.',
   },
@@ -111,7 +110,7 @@ export const entries: Entry[] = [
   {
     year: 2023,
     date: "2023",
-    stream: "venture",
+    stream: "side",
     title: "Co-founded a beard oil brand — Perusmiehen Partaöljy",
     body: 'Built the online store at <a href="https://partaoljy.fi">partaoljy.fi</a>. A crash course in <strong>pricing, distribution, and margins</strong>.',
     media: [{ img: "", cap: "product / packaging" }],
@@ -119,7 +118,7 @@ export const entries: Entry[] = [
   {
     year: 2023,
     date: "2023",
-    stream: "tools",
+    stream: "side",
     note: true,
     title:
       "Designed and built a salon booking site (parturikampaamosibe.fi) as a side web-dev gig.",
@@ -134,7 +133,7 @@ export const entries: Entry[] = [
   {
     year: 2020,
     date: "2020",
-    stream: "venture",
+    stream: "side",
     title: "Founded Sicsty — a platform for independent journalists",
     body: "A no-code platform with a pay-per-read model and 90% payouts to writers. Integrated third-party services via APIs and webhooks. Attracted ~70 pilot journalists but never found the traction needed for a user-generated-content business. Shut down in 2024.",
   },
@@ -149,7 +148,7 @@ export const entries: Entry[] = [
   {
     year: 2018,
     date: "2018",
-    stream: "tools",
+    stream: "side",
     note: true,
     title:
       "First website ever built — an early, rough version of what became Kotichef. No code, just templates and stubbornness.",
@@ -165,7 +164,7 @@ export const entries: Entry[] = [
   {
     year: 2016,
     date: "2011–2016",
-    stream: "work",
+    stream: "education",
     note: true,
     title:
       "Double degree in International Business — BBA at Helsinki Metropolia UAS, BA at IMC FH Krems, Austria. Thesis on solar panel leasing feasibility.",
@@ -181,7 +180,7 @@ export const entries: Entry[] = [
   {
     year: 2001,
     date: "2001",
-    stream: "construction",
+    stream: "other",
     title: "First time on a job site — age 11, shovel in hand",
     body: "Long before this page existed as a habit — digging ground on a construction site at eleven years old.",
     media: [{ img: "", cap: "shovel in hand, age 11" }],
