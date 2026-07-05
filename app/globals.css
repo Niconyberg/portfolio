@@ -4,11 +4,10 @@
   --ink-soft: #8b8d92;
   --line: #26282c;
   --orange: #ff4d00;
-  --c-construction: #e2703a;
-  --c-marathon: #4fae63;
+  --c-side: #b06fd6;
+  --c-education: #9aa0a8;
   --c-work: #4a90d9;
-  --c-venture: #b06fd6;
-  --c-tools: #9aa0a8;
+  --c-other: #4fae63;
   --spine: 44px;
   --maxw: 720px;
 }
@@ -164,7 +163,7 @@ h1 .accent {
   border-radius: 50%;
 }
 
-.chip[aria-pressed="false"] {
+.chip.dimmed {
   opacity: 0.34;
 }
 
@@ -234,11 +233,6 @@ h1 .accent {
   border-radius: 50%;
   background: var(--stream, var(--ink-soft));
   box-shadow: 0 0 0 4px var(--bg);
-}
-
-.entry.dimmed {
-  opacity: 0.12;
-  pointer-events: none;
 }
 
 .e-date {
