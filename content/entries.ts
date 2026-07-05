@@ -51,7 +51,7 @@ export const entries: Entry[] = [
     date: "May 16, 2026",
     stream: "marathon",
     title: "1st Marathon — Helsinki City Marathon",
-    body: 'Coached by a self-built AI marathon coaching app (iPhone + Apple Watch). <strong>Next.js · Supabase · iOS</strong>, built solo, shipped to the App Store. Sedentary to a 4:22 marathon in 8 months — the training method I tested on myself.',
+    body: 'Coached by a self-built AI marathon coaching app (iPhone + Apple Watch), developed with <strong>Claude Code</strong>. <strong>Next.js · Supabase · iOS</strong>, built solo, shipped to the App Store. Sedentary to a 4:22 marathon in 8 months — the training method I tested on myself.',
     media: [{ video: "" }, { link: "", label: "App Store" }],
     metrics: [
       { num: "1", lbl: "person team" },
@@ -69,10 +69,17 @@ export const entries: Entry[] = [
   },
   {
     year: 2025,
-    date: "2025",
+    date: "February 2025",
     stream: "venture",
     title: "Founded Kotichef",
-    body: 'A learning platform to help people become the chefs of their own homes — and live healthier, more enjoyable lives through it. <a href="https://www.kotichefhub.com">kotichefhub.com</a>.',
+    body: 'A learning platform to help people become the chefs of their own homes — and live healthier, more enjoyable lives through it. Built with <strong>Claude</strong>. <a href="https://www.kotichefhub.com">kotichefhub.com</a>.',
+  },
+  {
+    year: 2025,
+    date: "January 2025",
+    stream: "venture",
+    title: "Shipped my first AI-developed product — a Chrome extension",
+    body: 'Right-click a link on a news site, send the article to an AI, and get a summary in a modal — no need to open the page. Built with ChatGPT, the OpenAI API, and a Render.com backend; Google OAuth login, Stripe payments. Started building December 2024, published January 5, 2025.',
   },
   {
     year: 2024,
@@ -119,20 +126,20 @@ export const entries: Entry[] = [
     body: "A no-code platform with a pay-per-read model and 90% payouts to writers. Integrated third-party services via APIs and webhooks. Attracted ~70 pilot journalists but never found the traction needed for a user-generated-content business. Shut down in 2024.",
   },
   {
-    year: 2020,
-    date: "April 2020",
-    stream: "tools",
-    note: true,
-    title:
-      "First website ever built — an early, rough version of what became Kotichef. No code, just templates and stubbornness. Built when COVID hit.",
-  },
-  {
     year: 2018,
     date: "2018",
     stream: "work",
     note: true,
     title:
       "Joined Rightware as Software Delivery Coordinator, coordinating delivery and licensing of software packages.",
+  },
+  {
+    year: 2018,
+    date: "2018",
+    stream: "tools",
+    note: true,
+    title:
+      "First website ever built — an early, rough version of what became Kotichef. No code, just templates and stubbornness.",
   },
   {
     year: 2017,
