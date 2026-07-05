@@ -1,82 +1,60 @@
-const projects = [
-  {
-    name: "Project One",
-    description: "A short description of this project goes here.",
-    href: "https://github.com/Niconyberg",
-  },
-  {
-    name: "Project Two",
-    description: "A short description of this project goes here.",
-    href: "https://github.com/Niconyberg",
-  },
-  {
-    name: "Project Three",
-    description: "A short description of this project goes here.",
-    href: "https://github.com/Niconyberg",
-  },
-];
+import { PITCHES } from "@/lib/pitches.server";
+import { entries } from "@/content/entries";
+import { Timeline } from "@/components/Timeline";
+import { Filters } from "@/components/Filters";
+import { Ruler } from "@/components/Ruler";
+import { PitchBlock } from "@/components/PitchBlock";
 
-const links = [
-  { label: "GitHub", href: "https://github.com/Niconyberg" },
-  { label: "LinkedIn", href: "https://linkedin.com" },
-  { label: "Email", href: "mailto:nico.nyberg@gmail.com" },
-];
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ to?: string }>;
+}) {
+  const { to } = await searchParams;
+  const pitch = to ? PITCHES[to] ?? null : null;
+  const years = entries.map((e) => e.year);
 
-export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-2xl flex-col gap-20 px-6 py-24 sm:px-8">
-        <section className="flex flex-col gap-4">
-          <h1 className="text-4xl font-semibold tracking-tight text-black dark:text-zinc-50">
-            Nico Nyberg
+    <>
+      <div className="wrap">
+        <header>
+          <div className="kicker">
+            Työmaapäiväkirja · site diary · 2008 → today
+          </div>
+          <h1>
+            I can&apos;t stop
+            <br />
+            <span className="accent">building.</span>
           </h1>
-          <p className="max-w-lg text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Hi, I&apos;m Nico. I build software and enjoy working on projects
-            at the intersection of engineering and design. Welcome to my
-            portfolio.
+          <p className="intro">
+            It started on construction yards in Finland. Now it&apos;s
+            software — apps, servers, databases, AI agents — shipped mostly{" "}
+            <strong>solo, with agentic coding tools</strong>. The whole log,
+            newest first: work, side ventures, marathon training, dead ends
+            included.
           </p>
-          <div className="flex gap-6 pt-2 text-sm font-medium text-zinc-950 dark:text-zinc-50">
-            {links.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline-offset-4 hover:underline"
-              >
-                {link.label}
-              </a>
-            ))}
+          <div className="hero-clip">
+            [ drop meme clip here — self-shot loop, caption &quot;i can&apos;t
+            stop building&quot; ]
           </div>
-        </section>
+        </header>
 
-        <section className="flex flex-col gap-6">
-          <h2 className="text-xl font-semibold tracking-tight text-black dark:text-zinc-50">
-            Projects
-          </h2>
-          <div className="flex flex-col gap-6">
-            {projects.map((project) => (
-              <a
-                key={project.name}
-                href={project.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col gap-1 rounded-xl border border-black/[.08] p-5 transition-colors hover:bg-black/[.02] dark:border-white/[.145] dark:hover:bg-white/[.03]"
-              >
-                <h3 className="font-medium text-black dark:text-zinc-50">
-                  {project.name}
-                </h3>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                  {project.description}
-                </p>
-              </a>
-            ))}
-          </div>
-        </section>
-      </main>
-      <footer className="w-full max-w-2xl px-6 py-8 text-sm text-zinc-500 sm:px-8">
-        &copy; {new Date().getFullYear()} Nico Nyberg
+        {pitch && <PitchBlock pitch={pitch} />}
+
+        <Filters />
+      </div>
+
+      <div className="wrap">
+        <Timeline entries={entries} />
+      </div>
+
+      <footer>
+        START OF LOG · construction yards, 2008 ·{" "}
+        <span style={{ color: "var(--orange)" }}>■</span> prototype — more to
+        come
       </footer>
-    </div>
+
+      <Ruler years={years} />
+    </>
   );
 }

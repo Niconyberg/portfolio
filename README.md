@@ -1,37 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Site Diary
 
-## Getting Started
+Nico's personal portfolio — a reverse-chronological "site diary" timeline,
+built with Next.js (App Router) and deployed on Vercel. No database, no CMS —
+content lives in typed data files in this repo.
 
-First, run the development server:
+## Getting started
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Adding a timeline entry
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [`content/entries.ts`](content/entries.ts) and paste a new object into
+the `entries` array (newest entries go first — order in the array is the
+order on the page). The file's top comment documents every field; the short
+version:
 
-## Learn More
+```ts
+{
+  year: 2026,
+  date: "2026",                 // display label, e.g. "Summer 2008"
+  stream: "work",               // construction | venture | work | marathon | tools
+  title: "What happened",
+  body: "Optional longer description. <strong>Bold</strong> and <a href=\"...\">links</a> allowed.",
+  media: [
+    { img: "", cap: "caption" },        // "" -> placeholder box until you have a real image
+    { video: "https://youtu.be/..." },  // auto-converted to an embed
+    { link: "https://...", label: "App Store" },
+  ],
+  metrics: [{ num: "42.2", lbl: "km" }],
+}
+```
 
-To learn more about Next.js, take a look at the following resources:
+Set `note: true` instead of `body`/`media`/`metrics` for a one-line entry.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Images can be a remote `https://` URL or a local path under `/public`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Adding a pitch token
 
-## Deploy on Vercel
+When you send this site to a specific company, the URL can carry a token
+that renders a short "what I'd build here" note above the timeline. A bare
+URL (no token, or an unrecognized one) renders nothing extra — this is the
+default, safe state.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Open [`lib/pitches.server.ts`](lib/pitches.server.ts).
+2. Add an entry to `PITCHES` keyed by a random token (not the company name —
+   tokens shouldn't be guessable):
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```ts
+   x9q2m7: { company: "Acme", heading: "What I'd build at Acme", body: "…" },
+   ```
+3. Send the link as `https://<your-domain>/?to=x9q2m7`.
 
+This file has `import "server-only"` at the top, so it can never be bundled
+into client-side JavaScript — other companies' pitches never ship in
+anyone's HTML, no matter which link they open.
+
+## Deploying to Vercel
+
+This repo is already connected to Vercel — pushing to `main` triggers a
+production deployment automatically. To deploy manually:
+
+```bash
+vercel --prod
+```
+
+No environment variables or database are required.
